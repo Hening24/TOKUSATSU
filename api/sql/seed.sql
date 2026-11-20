@@ -1,0 +1,56 @@
+-- Data contoh. Cek ulang dan lengkapi sendiri sebelum dikumpulkan.
+INSERT INTO series (id, title, franchise, era, year, episodes, studio, synopsis) VALUES
+(1, 'Kamen Rider', 'Kamen Rider', 'Showa', 1971, 98, 'Toei Company / Ishimori Productions',
+ 'Takeshi Hongo diculik organisasi Shocker dan diubah menjadi manusia cyborg berwujud belalang. Ia kabur dan berbalik melawan Shocker sebagai Kamen Rider.'),
+(2, 'Kamen Rider Kuuga', 'Kamen Rider', 'Heisei', 2000, 49, 'Toei Company',
+ 'Yusuke Godai mendapatkan kekuatan Kuuga untuk menghadapi Gurongi, makhluk kuno yang bangkit kembali dan menyerang manusia.'),
+(3, 'Kamen Rider Ryuki', 'Kamen Rider', 'Heisei', 2002, 50, 'Toei Company',
+ 'Shinji Kido terseret ke dalam Rider War, pertarungan antar Rider di dunia cermin demi mengabulkan satu permintaan bagi sang pemenang.'),
+(4, 'Kamen Rider Den-O', 'Kamen Rider', 'Heisei', 2007, 49, 'Toei Company',
+ 'Ryotaro Nogami dirasuki Imagin bernama Momotaros dan bertarung menjaga garis waktu menggunakan kereta waktu Den-Liner.'),
+(5, 'Kamen Rider Build', 'Kamen Rider', 'Heisei', 2017, 49, 'Toei Company',
+ 'Sento Kiryu, fisikawan yang kehilangan ingatan, memakai kekuatan Fullbottle di Jepang yang terpecah menjadi tiga wilayah.'),
+(6, 'Kamen Rider Zero-One', 'Kamen Rider', 'Reiwa', 2019, 45, 'Toei Company',
+ 'Aruto Hiden, presiden perusahaan teknologi AI, melawan robot humanoid Humagear yang diretas dan lepas kendali.'),
+(7, 'Himitsu Sentai Goranger', 'Super Sentai', 'Showa', 1975, 84, 'Toei Company',
+ 'Lima pahlawan berkostum warna berbeda bekerja sama melawan Black Cross Army. Seri ini menjadi dasar format tim ala Super Sentai.'),
+(8, 'Kyoryu Sentai Zyuranger', 'Super Sentai', 'Heisei', 1992, 50, 'Toei Company',
+ 'Lima ksatria dari zaman kuno bangkit setelah 170 juta tahun untuk melawan Bandora dan pasukannya.'),
+(9, 'Ultraman', 'Ultraman', 'Showa', 1966, 39, 'Tsuburaya Productions',
+ 'Hayata dari Science Patrol menyatu dengan raksasa cahaya dari luar angkasa dan melindungi Bumi dari para kaiju.'),
+(10, 'Ultraseven', 'Ultraman', 'Showa', 1967, 49, 'Tsuburaya Productions',
+ 'Dan Moroboshi bertugas di Ultra Guard dan menyamar sebagai manusia sambil melawan ancaman alien.'),
+(11, 'Ultraman Taiga', 'Ultraman', 'Reiwa', 2019, 25, 'Tsuburaya Productions',
+ 'Ultraman Taiga, putra Ultraman Taro, bersatu dengan manusia untuk melindungi Bumi dari ancaman monster.'),
+(12, 'Space Sheriff Gavan', 'Metal Hero', 'Showa', 1982, 44, 'Toei Company',
+ 'Gavan, polisi luar angkasa, mengejar organisasi kejahatan Makuu yang menyerang Bumi.');
+
+INSERT INTO characters (id, series_id, name, actor, power, bio) VALUES
+(1, 1, 'Kamen Rider 1', 'Hiroshi Fujioka', 'Kekuatan cyborg belalang, serangan khas Rider Kick',
+ 'Takeshi Hongo adalah Rider pertama dalam franchise Kamen Rider.'),
+(2, 2, 'Kamen Rider Kuuga', 'Joe Odagiri', 'Sabuk Arcls, perubahan bentuk (Mighty Form), Rising Kick',
+ 'Yusuke Godai dikenal ceria dan selalu menenangkan orang di sekitarnya dengan acungan jempol.'),
+(3, 3, 'Kamen Rider Ryuki', 'Takamasa Suga', 'Kartu Advent, kontrak dengan monster cermin Dragredder',
+ 'Shinji Kido ikut Rider War dengan tujuan menghentikan pertarungan antar Rider.'),
+(4, 4, 'Kamen Rider Den-O', 'Takeru Satoh', 'Sabuk Den-O, bentuk Sword Form bersama Momotaros',
+ 'Ryotaro Nogami berubah wujud sesuai Imagin yang merasukinya.'),
+(5, 5, 'Kamen Rider Build', 'Atsuhiro Inukai', 'Fullbottle, kombinasi Rabbit dan Tank',
+ 'Sento Kiryu memecahkan masalah dengan sains dan logika.'),
+(6, 6, 'Kamen Rider Zero-One', 'Fumiya Takahashi', 'Progrise Key, bentuk Rising Hopper',
+ 'Aruto Hiden awalnya komedian sebelum menjadi presiden perusahaan teknologi.'),
+(7, 7, 'Aka Ranger', NULL, 'Kostum merah, pemimpin tim Goranger',
+ 'Aka Ranger adalah pemimpin dan anggota berkostum merah dari tim Goranger.'),
+(8, 8, 'Tyranno Ranger', NULL, 'Kekuatan dinosaurus Tyrannosaurus, pemimpin tim Zyuranger',
+ 'Tyranno Ranger adalah Ranger merah sekaligus pemimpin Zyuranger.'),
+(9, 9, 'Ultraman', 'Susumu Kurobe', 'Specium Ray, batas waktu bertarung sekitar tiga menit',
+ 'Ultraman pertama dalam franchise Ultra, berbagi tubuh dengan Shin Hayata.'),
+(10, 10, 'Ultraseven', 'Koji Moritsugu', 'Eye Slugger, Wide Shot',
+ 'Ultraseven menyamar sebagai Dan Moroboshi saat bertugas di Ultra Guard.'),
+(11, 11, 'Ultraman Taiga', NULL, 'Taiga Spark, bentuk Photon Earth',
+ 'Taiga adalah putra Ultraman Taro dan menjadi Ultra termuda di serinya.'),
+(12, 12, 'Space Sheriff Gavan', NULL, 'Laser Blade, Laser Z Beam',
+ 'Gavan adalah polisi luar angkasa yang menjadi pahlawan pertama Metal Hero.');
+
+-- Sinkronkan penghitung ID setelah insert manual
+SELECT setval(pg_get_serial_sequence('series', 'id'), (SELECT MAX(id) FROM series));
+SELECT setval(pg_get_serial_sequence('characters', 'id'), (SELECT MAX(id) FROM characters));
