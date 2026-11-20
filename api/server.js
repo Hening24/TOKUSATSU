@@ -93,5 +93,9 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Terjadi kesalahan di server' });
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`API jalan di port ${PORT}`));
+if (require.main === module && !process.env.VERCEL) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => console.log(`API jalan di port ${PORT}`));
+}
+
+module.exports = app;
