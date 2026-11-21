@@ -15,11 +15,13 @@ export default function PageHeader({ title, backTo = '/', right }) {
 
   return (
     <header className="page-header">
-      <button type="button" onClick={handleBack} className="icon-btn" aria-label="Kembali">
-        <ArrowLeft size={20} aria-hidden="true" />
-      </button>
-      <h1>{title}</h1>
-      <div className="page-header__right">{right}</div>
+      <div className="page-header__inner">
+        <button type="button" onClick={handleBack} className="icon-btn" aria-label="Kembali">
+          <ArrowLeft size={20} aria-hidden="true" />
+        </button>
+        <h1>{title}</h1>
+        <div className="page-header__right">{right}</div>
+      </div>
     </header>
   );
 }
