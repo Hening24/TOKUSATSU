@@ -1,11 +1,14 @@
-import { Download, Smartphone, CheckCircle2 } from 'lucide-react';
+import { useState } from 'react';
+import { Download, Smartphone, CheckCircle2, BadgeInfo } from 'lucide-react';
 import { PROFILE } from '../config';
 import { API_BASE } from '../api/client';
 import { usePwaInstall } from '../context/PwaInstallContext.jsx';
 import GlassPanel from '../components/GlassPanel.jsx';
+import Modal from '../components/Modal.jsx';
 
 export default function About() {
   const { canPrompt, isInstalled, isIos, promptInstall } = usePwaInstall();
+  const [infoOpen, setInfoOpen] = useState(false);
 
   return (
     <GlassPanel className="about-page">
@@ -84,6 +87,16 @@ export default function About() {
               </dd>
             </div>
           </dl>
+
+          <button
+            type="button"
+            className="btn-primary"
+            style={{ marginTop: 16 }}
+            onClick={() => setInfoOpen(true)}
+          >
+            <BadgeInfo size={18} aria-hidden="true" />
+            <span>Lihat Info Tugas Akhir</span>
+          </button>
         </section>
 
         {/* Sumber dan Kredit */}
@@ -131,6 +144,26 @@ export default function About() {
           </div>
         </section>
       </div>
+
+      <Modal
+        isOpen={infoOpen}
+        onClose={() => setInfoOpen(false)}
+        title="Info Tugas Akhir"
+        titleId="ta-info-title"
+        icon={<BadgeInfo size={22} aria-hidden="true" />}
+        size="sm"
+        footer={
+          <button type="button" className="btn-primary" onClick={() => setInfoOpen(false)}>
+            Tutup
+          </button>
+        }
+      >
+        <dl className="facts">
+          <div><dt>Nama</dt><dd>{PROFILE.name}</dd></div>
+          <div><dt>NIM</dt><dd>{PROFILE.nim}</dd></div>
+          <div><dt>Judul Tugas Akhir</dt><dd>{PROFILE.title}</dd></div>
+        </dl>
+      </Modal>
     </GlassPanel>
   );
 }

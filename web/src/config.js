@@ -4,6 +4,7 @@ export const PROFILE = {
   nim: '21120124120036',
   program: 'Teknik Komputer, Universitas Diponegoro',
   course: 'Praktikum Pemrograman Perangkat Bergerak (PPB)',
+  title: 'Tokusatsu Zukan: Ensiklopedia Tokusatsu Berbasis Progressive Web App',
   repo: 'https://github.com/Hening24/TOKUSATSU',
 };
 

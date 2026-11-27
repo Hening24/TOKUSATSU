@@ -1,12 +1,12 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Tv, Users, Clapperboard, Heart, Info } from 'lucide-react';
+import { Tv, Users, Clapperboard, Heart, UserCircle } from 'lucide-react';
 
 const TABS = [
   { to: '/',           label: 'Series',   icon: Tv,           match: (p) => p === '/' || p.startsWith('/series') },
   { to: '/characters', label: 'Karakter', icon: Users,        match: (p) => p.startsWith('/characters') },
   { to: '/actors',     label: 'Pemeran',  icon: Clapperboard, match: (p) => p.startsWith('/actors') },
   { to: '/favorites',  label: 'Favorit',  icon: Heart,        match: (p) => p.startsWith('/favorites') },
-  { to: '/about',      label: 'Tentang',  icon: Info,         match: (p) => p.startsWith('/about') },
+  { to: '/about',      label: 'Profil',   icon: UserCircle,   match: (p) => p.startsWith('/about') },
 ];
 
 export default function BottomNav() {
