@@ -1,9 +1,9 @@
 // Isi data diri di sini, dipakai di halaman Tentang.
 export const PROFILE = {
-  name: '[Nama]',
-  nim: '[NIM]',
+  name: 'Hening Wijaya Imanda',
+  nim: '21120124120036',
   program: 'Teknik Komputer, Universitas Diponegoro',
-  course: '[Mata kuliah]',
+  course: 'Praktikum Pemrograman Perangkat Bergerak (PPB)',
   repo: 'https://github.com/Hening24/TOKUSATSU',
 };
 
